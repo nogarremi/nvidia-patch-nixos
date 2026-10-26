@@ -24,12 +24,6 @@ jobs:
           path: nvidia-patch
       - name: Setup Nix
         uses: cachix/install-nix-action@v25
-      - name: Setup cache
-        uses: icewind1991/attic-action@v1
-        with:
-          name: ci
-          instance: https://cache.icewind.me
-          authToken: '${{ secrets.ATTIC_TOKEN }}'
       - name: Extract nvenc patch
         run: |
           nix run .#nvidia-patch-extractor nvidia-patch/patch.sh > patch.json
